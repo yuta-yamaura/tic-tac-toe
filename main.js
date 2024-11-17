@@ -1,12 +1,12 @@
 let field = document.querySelectorAll(".field");
-let board = Array(9).fill(null); // 分からない
+let board = Array(9).fill(null); // 初期値をnullに指定
 let currentPlayer = 1; // 現在のプレイヤー（1: プレイヤー1, 2: プレイヤー2）
 
 init();
 function init() {
     // 各セルにクリックイベントを設定
     field.forEach((cell, index) => {
-        cell.addEventListener('click', () => handleClick(index)); // 第二引数の書き方がわかってない
+        cell.addEventListener('click', () => handleClick(index));
     });
 }
 
@@ -28,7 +28,7 @@ function handleClick(index) {
     }
 
     // 引き分け判定
-    if (board.every((cell) => cell !== null)) { // everyメソッドの引数cellがどこから来たかわかってない
+    if (board.every(cell => cell !== null)) {// everyメソッドの引数cellがどこから来たかわかってない
         alert("Draw!");
         resetGame();
         return;
@@ -51,9 +51,9 @@ function checkWinner() {
         [2, 4, 6],
     ];
     // 勝利条件をチェック
-    return winPatterns.some((combination) => {
-        const [a, b, c] = combination; // combinationは事前に定義される必要があるのでは？
-        return ( // どのような処理をしてるのかわかってない
+    return winPatterns.some(combination => {
+        const [a, b, c] = combination;
+        return (
             board[a] !== null &&
             board[a] === board[b] &&
             board[a] === board[c]
@@ -68,15 +68,3 @@ function resetGame() {
     });
     currentPlayer = 1;
 }
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
